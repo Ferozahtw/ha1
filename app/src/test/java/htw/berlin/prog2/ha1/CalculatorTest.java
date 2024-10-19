@@ -106,5 +106,41 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    // Teilaufgabe 2
+    @Test
+    @DisplayName("should display incorrect result when dividing by a decimal number")
+    void testDivisionByDecimal() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(7);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+
+        String expected = "3.0";  // Falsches erwartetes Ergebnis (korrekt wäre 2.8)
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display incorrect result after multiplying two numbers")
+    void testMultiplication() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("*");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+
+        String expected = "10";  // Falsches erwartetes Ergebnis (korrekt wäre 12)
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual); 
+    }
+
+
 }
 
